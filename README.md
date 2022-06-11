@@ -1,5 +1,5 @@
 # CodeAI
-Code similarity Detection AI Contest - [DACON Ranked #9](https://dacon.io/competitions/official/235900/overview/description)
+Code similarity Detection AI Contest - [DACON Ranked #9](https://dacon.io/competitions/official/235900/overview/description)   
 Project presentation file - Team ET code similarity detection.pdf 
 
 ## environment
