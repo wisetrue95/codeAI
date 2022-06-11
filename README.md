@@ -16,7 +16,7 @@ Code similarity Detection AI Contest - [DACON Ranked #9](https://dacon.io/compet
 
 ## Pre-processing
 ```
-python scripts/preprocessing.py
+python preprocessing.py
 ```
 
 ## Training
