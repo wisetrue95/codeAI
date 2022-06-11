@@ -1,62 +1,50 @@
-# ImageEnhancement
-Camera Image Quality Enhancement AI Contest - [DACON Ranked #7](https://dacon.io/competitions/official/235746/overview/description)
+# CodeAI
+Code similarity Detection AI Contest - [DACON Ranked #9](https://dacon.io/competitions/official/235900/overview/description)
 
-This project is based on megvii-model's [HINet implementation](https://github.com/megvii-model/HINet).
-
-
-## Installation
-```
-git clone https://github.com/NextLevel-AI/CameraImageEnhancement
-cd CameraImageEnhancement
-pip install -r requirements.txt
-python setup.py develop --no_cuda_ext
-```
 
 ## environment
-- Ubuntu 16.04
 - GPU : NVIDIA Tesla V100 x 2
-- Cuda 10.1
-- python 3.7
-- torch 1.7.1
-- cudnn 7.6
-- addict 2.4.0
-- future 0.18.2
-- lmdb 1.2.1
-- numpy 1.19.5
-- opencv-python 4.5.3.56
-- Pillow 8.3.1
-- pyyaml 5.4.1
-- requests 2.26.0
-- scikit-image 0.17.2
-- scipy 1.5.4
-- tb-nightly 2.6.0a20210728
-- tqdm 4.61.2
-- yapf 0.31.0
+- Cuda 11.2
+- python 3.7.13
+- torch 1.9.0
+- pandas 1.3.4
+- numpy 1.20.3
+- datasets 2.2.1
+- transformers 4.19.0
+- tqdm 4.64.0
+- scikit-learn 1.0.2
 
 ## Pre-processing
 ```
-mkdir datasets
-python scripts/split.py -train [original train_input_img path] -label [original train_label_img path]
 python scripts/preprocessing.py
 ```
-## Data augmentation
-(Data augmentation code is included during training process. This code is for saving some sample augmented images)
-
-`python scripts/augmentation.py`
 
 ## Training
-`python basicsr/train.py -opt options/train/LG_HINet_Crop512_Step384.yml`
+- codet5 model
+```
+python train_codet5.py
+```
+
+- graphcodebert model
+```
+python train_graphcodebert.py
+```
 
 ## Test
-`python basicsr/inference.py  -opt options/inference/HINet-Inference.yml`
 
-### Weight path
-**`weights/HINet-136k.pth`**
+- codet5 model
+```
+python test_split.py
 
-## Result
-![result1](result1.png)
+# change test1 -> test2, test3, test4
+python test_codet5.py 
+```
 
-![result2](result2.png)
+- graphcodebert model
+```
+python test_graphcodebert.py
+```
+
 
 
 
