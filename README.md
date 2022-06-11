@@ -6,7 +6,7 @@ Project presentation file - Team ETC code similarity detection.pdf
 
 
 
-## environment
+## Environment
 - GPU : NVIDIA Tesla V100 x 2
 - Cuda 11.2
 - python 3.7.13
