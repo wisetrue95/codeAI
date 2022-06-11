@@ -3,9 +3,7 @@ os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"]="1,2"
 #os.environ["WANDB_DISABLED"] = "true"
 
-from transformers import AutoTokenizer, Trainer, TrainingArguments, T5Config, RobertaForSequenceClassification, \
-    DataCollatorWithPadding, T5ForConditionalGeneration, RobertaTokenizer
-import pandas as pd
+from transformers import Trainer, TrainingArguments, T5Config, DataCollatorWithPadding, T5ForConditionalGeneration, RobertaTokenizer
 import numpy as np
 from datasets import load_dataset, load_metric
 import torch
@@ -17,7 +15,6 @@ print(f'learning to {device}')
 MODEL = 'Salesforce/codet5-base'
 config = T5Config.from_pretrained(MODEL)
 tokenizer = RobertaTokenizer.from_pretrained(MODEL)
-tokenizer.truncation_side = 'left'
 model = T5ForConditionalGeneration.from_pretrained(MODEL)
 
 
@@ -74,8 +71,6 @@ args = TrainingArguments(
     load_best_model_at_end=True,
     per_device_eval_batch_size=16,
     # metric_for_best_model=True
-    #dataloader_num_workers=4,
-    #dataloader_pin_memory=True
 )
 
 trainer = Trainer(

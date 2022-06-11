@@ -18,8 +18,8 @@ tokenizer.truncation_side = 'left'
 model = RobertaForSequenceClassification.from_pretrained(MODEL)
 
 
-TRAIN_INPUT = "/home/ubuntu/yjkim/data/Code/graphbert_left/train_graphcodebert_left.csv"
-VAL_INPUT = "/home/ubuntu/yjkim/data/Code/graphbert_left/val_graphcodebert_left.csv"
+TRAIN_INPUT = "data/Code/graphbert_left/train_graphcodebert_left.csv"
+VAL_INPUT = "data/Code/graphbert_left/val_graphcodebert_left.csv"
 MAX_LEN = 512
 train_dataset = load_dataset("csv", data_files=TRAIN_INPUT)['train']
 val_dataset = load_dataset("csv", data_files=VAL_INPUT)['train']
@@ -46,9 +46,8 @@ def metric_fn(p):
     return output
 
 
-
 args = TrainingArguments(
-    './runs_left/',
+    'runs_graphbert/',
     per_device_train_batch_size=36,
     num_train_epochs=10,
     do_train=True,
@@ -76,19 +75,10 @@ trainer.train()
 
 
 # test
-# TEST = "/home/hjpark/pycharmProject/codeAI/CodeT5/Code/test.csv"
-TEST = "/home/ubuntu/yjkim/data/Code/ct5/test.csv"
-SUB = "/home/ubuntu/yjkim/data/Code/sample_submission.csv"
+TEST = "data/Code/test.csv"
+SUB = "data/Code/sample_submission.csv"
 
 def preprocess_script(script):
-    '''
-    ??? ??? ??
-    ?? -> ??
-    '    '-> tab ??
-    ?? ?? -> ? ??? ??
-    '''
-
-    #with open(script, 'r', encoding='utf-8') as file:
     lines = script.split('\n')
     preproc_lines = []
     for line in lines:
@@ -121,4 +111,4 @@ predictions = trainer.predict(test_dataset)
 
 df = pd.read_csv(SUB)
 df['similar'] = np.argmax(predictions.predictions, axis=-1)
-df.to_csv('./graphbert_left.csv', index=False)
+df.to_csv('./graphcodebert.csv', index=False)
