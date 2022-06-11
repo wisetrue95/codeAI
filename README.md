@@ -1,6 +1,6 @@
 # CodeAI
 Code similarity Detection AI Contest - [DACON Ranked #9](https://dacon.io/competitions/official/235900/overview/description)   
-Project presentation file - Team ET code similarity detection.pdf 
+Project presentation file - Team ETC code similarity detection.pdf 
 
 ## environment
 - GPU : NVIDIA Tesla V100 x 2
